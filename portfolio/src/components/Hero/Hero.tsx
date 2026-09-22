@@ -1,3 +1,5 @@
+"use client"
+import { useInView } from "@/hooks/useInView";
 import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 import Image from "next/image"
 
@@ -13,8 +15,11 @@ const workLinks: WorkLinks[] = [
 ]
 
 export function Hero() {
+    
+
     return (
-        <section className="max-w-6xl mx-auto px-6 py-20 min-h-screen">
+        <section
+            className={`max-w-6xl mx-auto px-6 py-20 min-h-screen transition-all duration-700 ease-out `}>
             <div className="flex items-center gap-6">
                 <div className="flex flex-col gap-6 flex-1">
                     <h1 className="text-5xl font-bold leading-tight">Fernando B Sebastião</h1>
@@ -32,13 +37,13 @@ export function Hero() {
                 </div>
                 <div className="flex justify-center items-center shrink-0 flex-1">
                     <Image
-                        className="w-90 h-130 rounded-2xl"
+                        className="object-cover w-90 h-130 rounded-2xl"
                         src="/Perfil-Dev.png"
                         alt="Foto de Fernando B Sebastião"
                         width={400}
                         height={400}
                     />
-                    
+
                 </div>
             </div>
 

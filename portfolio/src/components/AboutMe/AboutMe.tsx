@@ -1,4 +1,6 @@
 "use client"
+
+import { useInView } from "@/hooks/useInView";
 import { useState } from "react"
 
 type AboutTabs = {
@@ -38,14 +40,26 @@ const aboutTabs: AboutTabs[] = [
 
 export function AboutMe() {
 
+    const { ref, progress } = useInView();
+
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+    const opacity = progress;
+    const translateY = (1 - progress) * 40;
     const [activeTab, setActiveTab] = useState<string | null>(null)
 
     const contentTab = aboutTabs.find(aboutTab => aboutTab.id === activeTab)
 
 
     return (
-        <section id="sobre" className="max-w-6xl mx-auto px-6 py-20 space-y-4">
-            <h1>Sobre Mim</h1>
+        <section id="sobre"
+            ref={ref}
+            style={{
+                opacity,
+                transform: `translateY(${translateY}px)`,
+            }}
+            className={`max-w-6xl mx-auto px-6 py-20 space-y-4 transition-all duration-700 ease-out`}>
+
+            <h2 className="text-4xl font-bold mb-8">Sobre Mim</h2>
             <div className="text-text-secondary leading-relaxed">
 
                 <p >
@@ -88,15 +102,16 @@ export function AboutMe() {
                         className={`px-4 py-2 rounded-lg font-medium transition-colors ${aboutTab.id === activeTab ? "bg-accent text-primary" : "bg-surface text-text-secondary"}
 `}
                         onClick={() => {
-                            console.log("cliquei em:", aboutTab.id);
-                            setActiveTab(aboutTab.id)
                             aboutTab.id === activeTab ? setActiveTab(null) : setActiveTab(aboutTab.id)
                         }}>
                         {aboutTab.label}
                     </button>
                 ))}
             </div>
-            <div className={contentTab ? "mt-6 p-6 bg-surface rounded-xl" : ""}>
+            <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out 
+                    ${contentTab ? "max-h-250 opacity-100 mt-6 p-6 bg-surface rounded-xl" : "max-h-0 opacity-0"
+                    }`}>
                 {contentTab?.format === "list" ? (
                     <ul className="space-y-2">
                         {contentTab.content.map((item, index) => (
