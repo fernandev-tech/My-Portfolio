@@ -23,7 +23,7 @@ export function Header() {
             <nav>
                 <ul className={`flex gap-5`}>
                     {navItems.map(navItem => (
-                        <li key={navItem.href} className={`text-text-secondary hover:text-accent transition-colors`}><Link href={navItem.href}>{navItem.label}</Link></li>
+                        <li key={navItem.href} className={`text-text-secondary hover:text-accent transition-colors`}><a href={navItem.href}>{navItem.label}</a></li>
                     ))}
                 </ul>
             </nav>

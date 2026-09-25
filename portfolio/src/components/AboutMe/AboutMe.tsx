@@ -43,8 +43,9 @@ export function AboutMe() {
     const { ref, progress } = useInView();
 
     const easedProgress = 1 - Math.pow(1 - progress, 3);
-    const opacity = progress;
-    const translateY = (1 - progress) * 40;
+    const scale = 0.95 + easedProgress * 0.05;
+    const opacity = easedProgress;
+    const translateY = (1 - easedProgress) * 40;
     const [activeTab, setActiveTab] = useState<string | null>(null)
 
     const contentTab = aboutTabs.find(aboutTab => aboutTab.id === activeTab)
@@ -55,14 +56,14 @@ export function AboutMe() {
             ref={ref}
             style={{
                 opacity,
-                transform: `translateY(${translateY}px)`,
+                transform: `translateY(${translateY}px) scale(${scale})`,
             }}
             className={`max-w-6xl mx-auto px-6 py-20 space-y-4 transition-all duration-700 ease-out`}>
 
             <h2 className="text-4xl font-bold mb-8">Sobre Mim</h2>
             <div className="text-text-secondary leading-relaxed">
 
-                <p >
+                <p>
                     Sou Fernando B Sebastião, desenvolvedor web atualmente com foco em Frontend.
                     Trabalho principalmente com JavaScript, TypeScript, React, Next.js e
                     Tailwind CSS, criando interfaces funcionais, responsivas e bem estruturadas.
@@ -109,7 +110,7 @@ export function AboutMe() {
                 ))}
             </div>
             <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out 
+                className={`overflow-hidden 
                     ${contentTab ? "max-h-250 opacity-100 mt-6 p-6 bg-surface rounded-xl" : "max-h-0 opacity-0"
                     }`}>
                 {contentTab?.format === "list" ? (
