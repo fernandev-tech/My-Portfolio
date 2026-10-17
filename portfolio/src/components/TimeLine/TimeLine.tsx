@@ -51,7 +51,7 @@ export function TimeLine() {
                     key={journey.year}
                     className="relative pl-8 border-l-2 border-border ">
                     <div
-                        className={`absolute -left- top-1 rounded-full bg-accent ${index === myJourney.length - 1 ? "w-5 h-5 ring-4 ring-accent/30" : "w-4 h-4"
+                        className={`absolute left-[-9px] top-1 rounded-full bg-accent ${index === myJourney.length - 1 ? "w-5 h-5 ring-4 ring-accent/30" : "w-4 h-4"
                             }`}
                     />
                     <span className="text-accent font-mono text-sm">{journey.year}</span>
