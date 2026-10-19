@@ -19,7 +19,8 @@ export function Projects() {
     return (
         <section id="projetos"
             className="max-w-6xl mx-auto px-6 py-20">
-            <h2>Projetos</h2>
+            <h2 className="text-4xl font-bold mb-8">Projetos</h2>
+            
 
             {/*Projetos em destaque---------------------------------------------*/}
 
