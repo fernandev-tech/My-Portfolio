@@ -1,6 +1,4 @@
-"use client"
 
-import { useInView } from "@/hooks/useInView"
 type MyJourney = {
     year: string,
     title: string,
@@ -30,38 +28,22 @@ const myJourney: MyJourney[] = [
 ]
 export function TimeLine() {
 
-    const { ref, progress } = useInView();
-
-    const easedProgress = 1 - Math.pow(1 - progress, 3);
-    const scale = 0.95 + easedProgress * 0.05;
-    const opacity = easedProgress;
-    const translateY = (1 - easedProgress) * 40;
-
     return (
         <section id="timeline"
-            ref={ref}
-            style={{
-                opacity,
-                transform: `translateY(${translateY}px) scale(${scale})`,
-            }}
-            className="max-w-6xl mx-auto px-6 py-20 space-y-10">
-            <h2 className="text-4xl font-bold mb-8">Minha Jornada</h2>
+            className="max-w-6xl mx-auto px-4 py-12 space-y-10 sm:px-6 sm:py-16 md:py-20">
+            <h2 className="text-3xl font-bold mb-8 sm:text-4xl">Minha Jornada</h2>
             {myJourney.map((journey, index) => (
                 <div
                     key={journey.year}
                     className="relative pl-8 border-l-2 border-border ">
                     <div
                         className={`absolute left-[-9px] top-1 rounded-full bg-accent ${index === myJourney.length - 1 ? "w-5 h-5 ring-4 ring-accent/30" : "w-4 h-4"
-                            }`}
-                    />
+                            }`}/>
                     <span className="text-accent font-mono text-sm">{journey.year}</span>
                     <h3 className="text-xl font-bold mt-1">{journey.title}</h3>
                     <p className="text-text-secondary mt-2">{journey.description}</p>
                 </div>
             ))}
-
-
-
         </section>
     )
 }

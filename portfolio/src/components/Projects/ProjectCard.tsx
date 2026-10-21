@@ -34,7 +34,7 @@ export function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
                 ))}
             </div>
 
-            <div className="flex flex-wrap gap-3 mt-4">
+            <div className="flex flex-col gap-3 mt-4 md:flex md:flex-row">
                 <a
                     href={project.viewCode}
                     className="inline-flex justify-center items-center flex-1 rounded-lg px-4 py-2.5 text-sm font-medium border border-white/10 bg-accent/10 text-white transition-colors hover:bg-accent/20">

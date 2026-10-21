@@ -20,7 +20,7 @@ export function ContentBlocks({ blocks }: ContentBlockProps) {
                     return (
                         <ul key={index}>
                             {block.content.map((item, itemIndex) => (
-                                <li className="ml-8 text-text-secondary mt-2 list-disc pl-2" key={itemIndex}>{item}</li>
+                                <li className="ml-4 md:ml-8 text-text-secondary mt-2 list-disc pl-2" key={itemIndex}>{item}</li>
                             ))}
                         </ul>
                     )
