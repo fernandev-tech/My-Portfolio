@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header/Header";
 import { WhatsAppBubble } from "@/components/WhatsAppBubble";
+import { Footer } from "@/components/Footer/Footer";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -29,6 +30,9 @@ export default function RootLayout({
         <Header />
         {children}
         <WhatsAppBubble />
+        <Footer />
+
+        
       </body>
     </html>
   );

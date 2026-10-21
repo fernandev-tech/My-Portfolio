@@ -1,3 +1,5 @@
+import { LuSend } from "react-icons/lu";
+
 type FormData = {
     label: string;
     htmlFor: string;
