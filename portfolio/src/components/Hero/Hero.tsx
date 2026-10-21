@@ -1,22 +1,26 @@
 import Image from "next/image";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import type { IconType } from "react-icons";
 
 type WorkLink = {
     label: string;
     href: string;
-    Icon: React.ReactNode;
+    Icon: IconType;
+    color: string,
 };
 
 const workLinks: WorkLink[] = [
     {
         label: "GitHub",
         href: "https://github.com/fernandev-tech",
-        Icon: <FaGithub />,
+        Icon: FaGithub,
+        color: "#F0F0F0",
     },
     {
         label: "LinkedIn",
         href: "https://linkedin.com/fernandobsebastiao",
-        Icon: <FaLinkedin />,
+        Icon: FaLinkedin,
+        color: "#0A66C2",
     },
 ];
 
@@ -46,15 +50,28 @@ export function Hero() {
                         à experiência do utilizador (UI/UX) e uma evolução
                         contínua em engenharia de software.
                     </p>
-
+                    {/* Redes sociais */}
+                    <div className="flex items-center gap-5">
+                        {workLinks.map(({ label, href, Icon, color }) => (
+                            <a
+                                key={href}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={label}
+                                style={{ color }}
+                                className="text-2xl text-text-secondary transition-colors hover:text-accent"
+                            >
+                                <Icon />
+                            </a>
+                        ))}
+                    </div>
                     {/* Botões */}
                     <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
-                        <a
-                            href="/Fernando-CV.pdf"
+                        <a href="/Fernando-CV.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full rounded-lg bg-accent px-6 py-3 text-center font-medium text-primary transition-opacity hover:opacity-90 sm:w-auto"
-                        >
+                            className="w-full rounded-lg bg-accent px-6 py-3 text-center font-medium text-primary transition-opacity hover:opacity-90 sm:w-auto">
                             Descarregar CV
                         </a>
 
@@ -66,21 +83,7 @@ export function Hero() {
                         </a>
                     </div>
 
-                    {/* Redes sociais */}
-                    <div className="flex items-center gap-5">
-                        {workLinks.map(({ label, href, Icon }) => (
-                            <a
-                                key={href}
-                                href={href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={label}
-                                className="text-2xl text-text-secondary transition-colors hover:text-accent"
-                            >
-                                {Icon}
-                            </a>
-                        ))}
-                    </div>
+
                 </div>
 
                 {/* Fotografia */}

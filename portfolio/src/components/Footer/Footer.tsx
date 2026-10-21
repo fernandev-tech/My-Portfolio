@@ -51,7 +51,7 @@ export function Footer() {
     <footer className="flex flex-col items-center gap-6 border-t-2 border-accent/10 bg-primary px-4 py-8 font-mono md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8 md:px-8 lg:px-12">
       {/* Marca */}
       <div className="flex flex-col items-center gap-2 md:items-start">
-        <h2 className="text-lg font-bold text-[#378add]">
+        <h2 className="text-lg font-bold text-accent">
           Fernandev
         </h2>
 
