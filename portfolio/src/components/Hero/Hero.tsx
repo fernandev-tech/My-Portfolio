@@ -1,55 +1,100 @@
-"use client"
-import { useInView } from "@/hooks/useInView";
-import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
-import Image from "next/image"
+import Image from "next/image";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-type WorkLinks = {
-    label: string,
-    href: string,
-    Icon: React.ReactNode,
-}
-const workLinks: WorkLinks[] = [
-    { label: "Github", href: "https://github.com/fernandev-tech", Icon: <FaGithub /> },
-    { label: "Linkedin", href: "https://Linkedin.com/fernandobsebastiao", Icon: <FaLinkedin /> },
+type WorkLink = {
+    label: string;
+    href: string;
+    Icon: React.ReactNode;
+};
 
-]
+const workLinks: WorkLink[] = [
+    {
+        label: "GitHub",
+        href: "https://github.com/fernandev-tech",
+        Icon: <FaGithub />,
+    },
+    {
+        label: "LinkedIn",
+        href: "https://linkedin.com/fernandobsebastiao",
+        Icon: <FaLinkedin />,
+    },
+];
 
 export function Hero() {
-    
 
     return (
         <section
-            className={`max-w-6xl mx-auto px-6 py-20 min-h-screen transition-all duration-700 ease-out `}>
-            <div className="flex items-center gap-6">
+            id="top"
+            className="mx-auto flex min-h-screen max-w-6xl items-center px-4 py-10 font-mono sm:px-6 sm:py-14 md:py-20"
+        >
+            <div className="flex w-full flex-col items-stretch gap-8 md:flex-row md:items-center md:gap-10">
 
-                <div className="flex flex-col gap-6 flex-1">
+                {/* Conteúdo textual */}
+                <div className="flex min-w-0 flex-1 flex-col items-start gap-5">
+                    <span className="self-start rounded-full bg-accent/10 px-3 py-1 text-sm text-accent">
+                        Crescer com o que tenho. Construir com o que aprendo.
+                    </span>
 
-                    <h1 className="text-5xl font-bold leading-tight">Fernando B Sebastião</h1>
-                    <span className="text-sm self-start bg-accent/10 text-accent  rounded-full px-3 py-1 ">Comecei a programar no telemóvel.</span>
-                    <p className="text-text-secondary leading-relaxed">Desenvolvedor Frontend. Sempre crescendo em engenharia de software desenvolvendo sistemas baseados em IU/UX focado nas tecnologias como React, TypeScript, NextJs, Tailwind CSS.</p>
-                   
-                    <div className="flex gap-4">
-                        <a href="/Fernando-CV.pdf" target="_blank" className="bg-accent text-primary px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity" >Download CV</a>
-                        <a className="border border-accent text-accent px-6 py-3 rounded-lg font-medium hover:bg-accent/10 transition-colors" href="#projetos">Ver Projetos</a>
+                    <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+                        Fernando B Sebastião
+                    </h1>
+
+                    <p className="leading-relaxed text-text-secondary">
+                        Desenvolvedor web focado em criar interfaces intuitivas
+                        e transformar ideias em aplicações funcionais. Trabalho
+                        com React, TypeScript, Next.js e Tailwind CSS, com atenção
+                        à experiência do utilizador (UI/UX) e uma evolução
+                        contínua em engenharia de software.
+                    </p>
+
+                    {/* Botões */}
+                    <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
+                        <a
+                            href="/Fernando-CV.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full rounded-lg bg-accent px-6 py-3 text-center font-medium text-primary transition-opacity hover:opacity-90 sm:w-auto"
+                        >
+                            Descarregar CV
+                        </a>
+
+                        <a
+                            href="#projetos"
+                            className="w-full rounded-lg border border-accent px-6 py-3 text-center font-medium text-accent transition-colors hover:bg-accent/10 sm:w-auto"
+                        >
+                            Ver projetos
+                        </a>
                     </div>
-                    <div className="flex items-center gap-4">
-                        {workLinks.map((workLink) => (
-                            <a className="text-2xl text-text-secondary hover:text-accent transition-colors" key={workLink.href} aria-label={workLink.label} href={workLink.href}>{workLink.Icon}</a>
+
+                    {/* Redes sociais */}
+                    <div className="flex items-center gap-5">
+                        {workLinks.map(({ label, href, Icon }) => (
+                            <a
+                                key={href}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={label}
+                                className="text-2xl text-text-secondary transition-colors hover:text-accent"
+                            >
+                                {Icon}
+                            </a>
                         ))}
                     </div>
                 </div>
-                <div className="flex justify-center items-center shrink-0 flex-1">
+
+                {/* Fotografia */}
+                <div className="flex w-full justify-center md:flex-1">
                     <Image
-                        className="object-cover w-90 h-130 rounded-2xl"
+                        className="h-82 w-56 rounded-2xl object-cover sm:h-80 sm:w-64 md:h-110 md:w-80"
                         src="/Perfil-Dev.png"
-                        alt="Foto de Fernando B Sebastião"
+                        alt="Fotografia de Fernando B Sebastião"
                         width={400}
                         height={400}
+                        priority
                     />
-
                 </div>
             </div>
-
         </section>
-    )
+    );
 }

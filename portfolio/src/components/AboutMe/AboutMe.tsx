@@ -40,12 +40,7 @@ const aboutTabs: AboutTabs[] = [
 
 export function AboutMe() {
 
-    const { ref, progress } = useInView();
 
-    const easedProgress = 1 - Math.pow(1 - progress, 3);
-    const scale = 0.95 + easedProgress * 0.05;
-    const opacity = easedProgress;
-    const translateY = (1 - easedProgress) * 40;
     const [activeTab, setActiveTab] = useState<string | null>(null)
 
     const contentTab = aboutTabs.find(aboutTab => aboutTab.id === activeTab)
@@ -53,11 +48,7 @@ export function AboutMe() {
 
     return (
         <section id="sobre"
-            ref={ref}
-            style={{
-                opacity,
-                transform: `translateY(${translateY}px) scale(${scale})`,
-            }}
+
             className={`max-w-6xl mx-auto px-6 py-20 space-y-4 transition-all duration-700 ease-out`}>
 
             <h2 className="text-4xl font-bold mb-8">Sobre Mim</h2>
